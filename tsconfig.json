@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "es2015",
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"moduleResolution": "Node",
+		"jsx": "react-jsx",
+		"sourceRoot": "./src",
+		"rootDir": ".",
+		"sourceMap": true,
+		"incremental": true
+	},
+	"exclude": [
+		"node_modules"
+	]
+}
