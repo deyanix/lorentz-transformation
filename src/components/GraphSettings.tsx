@@ -25,10 +25,13 @@ export interface GraphInstance {
 export interface GraphSettingsProps {
 	instance: GraphInstance;
 	onChange: (instance: GraphInstance) => void;
+	running: boolean;
 }
 
 export function randomHue(): string {
-	return Math.floor(Math.random() * 255).toString(16);
+	return Math.floor(Math.random() * 255)
+		.toString(16)
+		.padStart(2, '0');
 }
 
 export function randomColor(): string {
@@ -120,7 +123,11 @@ export default function (props: GraphSettingsProps) {
 					alignItems="center"
 				>
 					<Typography variant="subtitle2">Ciała</Typography>
-					<IconButton size="small" onClick={addNode}>
+					<IconButton
+						size="small"
+						onClick={addNode}
+						disabled={props.running}
+					>
 						<AddIcon />
 					</IconButton>
 				</Stack>
@@ -134,6 +141,7 @@ export default function (props: GraphSettingsProps) {
 										handleNodeChange(node, newNode)
 									}
 									onRemove={() => handleNodeRemove(node)}
+									running={props.running}
 								/>
 							</Box>
 							{i !== props.instance.nodes.length - 1 && (

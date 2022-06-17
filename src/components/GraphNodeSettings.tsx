@@ -15,6 +15,7 @@ export interface GraphNodeSettingsProps {
 	node: GraphNode;
 	onChange: (node: GraphNode) => void;
 	onRemove: () => void;
+	running: boolean;
 }
 
 export default function (props: GraphNodeSettingsProps) {
@@ -92,14 +93,20 @@ export default function (props: GraphNodeSettingsProps) {
 					value={props.node.startPoint.x}
 					onChange={handleChangeStartX}
 					label="x"
+					disabled={props.running}
 				/>
 				<PositionInput
 					value={props.node.startPoint.y}
 					onChange={handleChangeStartY}
 					label="y"
+					disabled={props.running}
 				/>
 			</Stack>
-			<IconButton size="small" onClick={props.onRemove}>
+			<IconButton
+				size="small"
+				onClick={props.onRemove}
+				disabled={props.running}
+			>
 				<DeleteIcon />
 			</IconButton>
 		</Stack>

@@ -48,37 +48,24 @@ export default function (props: GraphProps): JSX.Element {
 			return;
 		}
 
-		let animationFrameId: number;
-		let initialized = false;
-		const render = () => {
-			if (!initialized) {
-				drawFrame();
-				initialized = true;
-			}
-			drawTrack(props.nodes);
-			drawPoint(props.nodes);
-			setLastPoints(
-				Object.fromEntries(
-					props.nodes.map((n) => {
-						const lastPoint = lastPoints[n.id];
-						const currentPoint = props.transformation(n, TIME_STEP);
-						return [
-							n.id,
-							{
-								x: lastPoint.x + currentPoint.x,
-								y: lastPoint.y + currentPoint.y,
-							},
-						];
-					})
-				)
-			);
-			animationFrameId = window.requestAnimationFrame(render);
-		};
-
-		render();
-		return () => {
-			window.cancelAnimationFrame(animationFrameId);
-		};
+		drawFrame();
+		drawTrack(props.nodes);
+		drawPoint(props.nodes);
+		setLastPoints(
+			Object.fromEntries(
+				props.nodes.map((n) => {
+					const lastPoint = lastPoints[n.id];
+					const currentPoint = props.transformation(n, TIME_STEP);
+					return [
+						n.id,
+						{
+							x: lastPoint.x + currentPoint.x,
+							y: lastPoint.y + currentPoint.y,
+						},
+					];
+				})
+			)
+		);
 	}, [props.running, lastPoints, props.transformation]);
 
 	const drawFrame = useCallback(() => {

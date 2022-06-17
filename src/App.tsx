@@ -37,7 +37,7 @@ const App = () => {
 			const v = instance.otherFrameVelocity;
 			const x = point.x;
 			const lambda = 1 / (1 - v ** 2 / c ** 2) ** 0.5;
-			console.log(lambda, x - v * t, lambda * (x - v * t));
+			// console.log(lambda, x - v * t, lambda * (x - v * t));
 			return {
 				x: lambda * (x - v * t),
 				y: point.y,
@@ -90,6 +90,7 @@ const App = () => {
 						<GraphSettings
 							instance={instance}
 							onChange={handleInstanceChange}
+							running={running}
 						/>
 					</Grid>
 				</Grid>

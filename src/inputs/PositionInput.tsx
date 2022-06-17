@@ -7,6 +7,7 @@ export interface PositionInputProps {
 	onChange?: (value: number) => void;
 	label?: string;
 	size?: 'small' | 'medium';
+	disabled?: boolean;
 }
 
 export default function (props: PositionInputProps) {
@@ -41,6 +42,7 @@ export default function (props: PositionInputProps) {
 				endAdornment: <InputAdornment position="end">m</InputAdornment>,
 			}}
 			type="number"
+			disabled={props.disabled}
 		/>
 	);
 }
