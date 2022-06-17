@@ -1,4 +1,4 @@
-# Proker Web Application
+# Lorentz transformation
 
 ## How to use
 
