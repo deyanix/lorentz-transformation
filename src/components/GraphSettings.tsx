@@ -14,6 +14,7 @@ import { GraphNode } from './Graph';
 import { useState } from 'react';
 import { add } from 'lodash';
 import React from 'react';
+import { LIGHT_SPEED } from '../App';
 
 export interface GraphInstance {
 	lightVelocity: number;
@@ -95,8 +96,8 @@ export default function (props: GraphSettingsProps) {
 						value={props.instance.lightVelocity}
 						onChange={handleLightVelocityChange}
 						variant="logarithm"
-						base={299792458}
-						min={0}
+						base={LIGHT_SPEED}
+						min={0.1}
 						max={1}
 						step={0.05}
 					/>
