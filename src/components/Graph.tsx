@@ -41,7 +41,7 @@ export default function (props: GraphProps): JSX.Element {
 				props.nodes.map((n) => [n.id, lastPoints[n.id] || n.startPoint])
 			)
 		);
-	}, [...props.nodes]);
+	}, [props.nodes]);
 
 	useEffect(() => {
 		if (!props.running) {
